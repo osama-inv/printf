@@ -10,7 +10,7 @@ void print_the_buf(char buffer[], int *byts_to_print);
 int _printf(const char *format, ...)
 {
     /* initializing the vars */
-    char buffer[BUFF_SIZE];
+    char buffer[BUFF_len];
 	int i, printed = 0, num_of_chars_printed = 0;
 	int flags, width, precision, size, byts_to_print = 0;
 	va_list list;
@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 		if (format[i] != '%')
 		{
 			buffer[byts_to_print++] = format[i];
-			if (byts_to_print == BUFF_SIZE)
+			if (byts_to_print == BUFF_len)
             {
                 print_the_buf(buffer, &byts_to_print);
             }
