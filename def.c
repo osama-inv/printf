@@ -133,7 +133,7 @@ int print_char(va_list types, char buffer[],
 {
 	char ch = va_arg(types, int);
 
-	return (handle_write_char(ch, buffer, flags, width, precision, size));
+	return (hwrite_char(ch, buffer, flags, width, precision, size));
 }
 /**
  * print_int - a function that outputs an integer
