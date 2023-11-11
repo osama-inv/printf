@@ -37,12 +37,12 @@ int _printf(const char *format, ...)
 		    /* case of encountering % */
 			print_the_buf(buffer, &byts_to_print);
 			/* picking different things and sps % */
-			flags = get_flags(format, &i);
-			width = get_width(format, &i, list);
-			precision = get_precision(format, &i, list);
-			size = get_size(format, &i);
+			flags = has_flags(format, &i);
+			width = has_width(format, &i, list);
+			precision = has_precision(format, &i, list);
+			size = has_size(format, &i);
 			++i;
-			printed = handle_print(format, &i, list, buffer,
+			printed = get_def_print(format, &i, list, buffer,
 				flags, width, precision, size);
 			if (printed == -1)
             {
