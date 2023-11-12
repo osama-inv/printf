@@ -16,11 +16,11 @@ int has_size(const char *format, int *i)
 
 	if (format[num] == 'l')
 	{
-		s = S_LONG;
+		s = long_s;
 	}
 	else if (format[num] == 'h')
 	{
-		s = S_SHORT;
+		s = short_s;
 	}
 
 	if (s == 0)
