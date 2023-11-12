@@ -1,42 +1,44 @@
 #include "main.h"
 
 /**
- * get_precision - Calculates the precision for printing
- * @format: Formatted string in which to print the arguments
- * @i: List of arguments to be printed.
- * @list: list of arguments.
+ * has_precision - a function that calculates the print precision
  *
- * Return: Precision.
- */
-int get_precision(const char *format, int *i, va_list list)
+ * @format: is the  format string used to print the arguments
+ * @i: is the arguments list to be printed
+ * @list: is a pointer that list the arguments
+ *
+ * Return: the precision
+*/
+
+int has_precision(const char *format, int *i, va_list list)
 {
-int num = *i + 1;
-int prec = 0;
-if (format[num] != '.')
-return (prec);
-for (num += 1; format[num] != '\0'; num++)
-{
-if (is_digit(format[num]))
-{
-prec *= 10;
-prec += format[num] - '0';
-}
-else if (format[num] == '*')
-{
-num++;
-prec = va_arg(list, int);
-if (prec < 0)
-{
-// Handle negative precision, maybe set it to a default value
-prec = 0;
-}
-break;
-}
-else
-{
-break;
-}
-}
-*i = num - 1;
-return (prec);
+	int prec = -1;
+	int num = *i + 1;
+
+	if (format[num] != '.')
+	{
+		return (prec);
+	}
+	prec = 0;
+
+	for (num = num + 1; format[num] != '\0'; num++)
+	{
+		if (is_digit(format[num]))
+		{
+			prec = prec * 10;
+			prec = prec + format[num] - '0';
+		}
+		else if (format[num] == '*')
+		{
+			num++;
+			prec = va_arg(list, int);
+			break;
+		}
+		else
+		{
+			break;
+		}
+	}
+	*i = num - 1;
+	return (prec);
 }
